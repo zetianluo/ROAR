@@ -12,8 +12,8 @@ from ROAR.agent_module.pid_agent import PIDAgent
 
 
 def main():
-    agent_config = AgentConfig.parse_file(Path("./ROAR_Sim/configurations/agent_configuration.json"))
-    carla_config = CarlaConfig.parse_file(Path("./ROAR_Sim/configurations/configuration.json"))
+    agent_config = AgentConfig.parse_file(Path('./ROAR_Sim/configurations/agent_configuration.json'))  # .parent
+    carla_config = CarlaConfig.parse_file(Path('./ROAR_Sim/configurations/configuration.json'))
 
     carla_runner = CarlaRunner(carla_settings=carla_config,
                                agent_settings=agent_config,
@@ -27,8 +27,8 @@ def main():
         carla_runner.on_finish()
         logging.error(f"{e}. Might be a good idea to restart Server")
 
-
-if __name__ == "__main__":
+# display methodolei
+def run():
     logging.basicConfig(format='%(levelname)s - %(asctime)s - %(name)s '
                                '- %(message)s',
                         level=logging.DEBUG)
@@ -36,3 +36,7 @@ if __name__ == "__main__":
     warnings.simplefilter("ignore")
     np.set_printoptions(suppress=True)
     main()
+
+
+if __name__ == "__main__":
+    run()
